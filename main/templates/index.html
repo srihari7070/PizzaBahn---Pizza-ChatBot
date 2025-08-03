@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PizzaBahn - Your Pizza Delivery Partner</title>
+    <!-- Use Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="header">
+            <div class="logo">
+                <div class="pizza-icon">🍕</div>
+                <div class="app-title">PizzaBahn</div>
+            </div>
+            <div class="tagline">Your Express Pizza Delivery Partner</div>
+            <div class="options-menu">
+                <button class="options-button" id="optionsButton">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <div class="dropdown-menu hidden" id="dropdownMenu">
+                    <button id="viewMenuButton">View Menu</button>
+                    <button id="cancelOrderButton">Cancel Order</button>
+                    <button id="restartOrderButton">Restart Order</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <!-- Chat messages will be dynamically added here -->
+            <div class="welcome-message">
+                <div class="welcome-icon">🍕</div>
+                <h3>Welcome to PizzaBahn!</h3>
+                <p>I'm your friendly pizza assistant. Ready to help you order delicious pizza!</p>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <input 
+                type="text" 
+                class="message-input" 
+                id="messageInput" 
+                placeholder="Type your message here or click the microphone to speak..."
+                maxlength="500"
+            >
+            <button class="microphone-button" id="microphoneButton">
+                <i class="fas fa-microphone"></i>
+            </button>
+            <button class="send-button" id="sendButton">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Script to handle all the chat functionality -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
