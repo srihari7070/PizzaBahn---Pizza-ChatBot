@@ -41,6 +41,7 @@ This project is a simple pizza ordering chatbot built with a Python Flask backen
 To start the chatbot, run the `main2.py` script. This will launch the Flask development server.
 ```bash
 python main2.py
+```
 
 Once the server is running, you can access the chatbot by opening your web browser and navigating to http://127.0.0.1:5000.
 
