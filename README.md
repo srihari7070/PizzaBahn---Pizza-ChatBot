@@ -41,3 +41,25 @@ This project is a simple pizza ordering chatbot built with a Python Flask backen
 To start the chatbot, run the `main2.py` script. This will launch the Flask development server.
 ```bash
 python main2.py
+
+Once the server is running, you can access the chatbot by opening your web browser and navigating to http://127.0.0.1:5000.
+
+File Structure
+main2.py: The core Python backend. It handles API requests, manages the conversational state, and contains the menu data and chatbot logic.
+
+requirements.txt: Lists the Python libraries required to run the backend.
+
+index.html: The main HTML file that provides the structure for the chatbot's frontend.
+
+script.js: The JavaScript file that manages the user interface, handles sending messages to the backend, and displays responses dynamically.
+
+style.css: The CSS file that provides all the styling for the chatbot, ensuring a modern and responsive design.
+
+Usage
+Open the web application in your browser.
+
+Type your order in the input box and press Enter or click the send button.
+
+The bot will guide you through the ordering process, showing you the menu, confirming your selections, and asking for your delivery details.
+
+You can use the options menu (three dots icon) to view the full menu, cancel your current order, or restart the conversation.
