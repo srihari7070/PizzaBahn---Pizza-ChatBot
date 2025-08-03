@@ -2,6 +2,8 @@
 
 This project is a simple pizza ordering chatbot built with a Python Flask backend and a JavaScript/HTML/CSS frontend. It uses the Google Gemini API to power its conversational capabilities, allowing users to place an order in a natural language format.
 
+[Watch a demo of the PizzaBahn Chatbot on Google Drive](https://drive.google.com/file/d/VIDEO_ID/view?usp=sharing)
+
 ## Features
 - Interactive chat interface for ordering pizzas, extras, and drinks.
 - Menu management with support for dietary filters (e.g., Vegetarian, Vegan).
