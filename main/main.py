@@ -300,11 +300,11 @@ class MenuManager:
         """Generates a formatted string of the menu, optionally filtered."""
         if dietary_needs:
             menu = self.filter_menu_by_dietary(dietary_needs)
-            menu_str = f"🍕 **PizzaBahn Menu ({dietary_needs.capitalize()} Options)** 🍕\n\n"
+            menu_str = f"**PizzaBahn Menu ({dietary_needs.capitalize()} Options)** \n\n"
             
             # Structured Pizzas section
             menu_str += "═══════════════════════════════════════════════════\n"
-            menu_str += "🍕 **PIZZAS** 🍕\n"
+            menu_str += " **PIZZAS** \n"
             menu_str += "═══════════════════════════════════════════════════\n\n"
             
             for i, pizza in enumerate(menu['pizzas'], 1):
@@ -314,7 +314,7 @@ class MenuManager:
             
             # Structured Extras section
             menu_str += "═══════════════════════════════════════════════════\n"
-            menu_str += "🍞 **EXTRAS & SIDES** 🍞\n"
+            menu_str += "**EXTRAS & SIDES** \n"
             menu_str += "═══════════════════════════════════════════════════\n\n"
             
             for i, extra in enumerate(menu['extras'], 1):
@@ -324,7 +324,7 @@ class MenuManager:
                     menu_str += f"     Note: {extra['description']}\n"
                 menu_str += "\n"
         else:
-            menu_str = "🍕 **PizzaBahn Complete Menu** 🍕\n\n"
+            menu_str = " **PizzaBahn Complete Menu** \n\n"
             
             # Group pizzas by type for better structure
             veg_pizzas = [p for p in self.menu_data['pizzas'] if 'Vegetarian' in p['type']]
@@ -334,7 +334,7 @@ class MenuManager:
             # Vegetarian Pizzas
             if veg_pizzas:
                 menu_str += "═══════════════════════════════════════════════════\n"
-                menu_str += "🌱 **VEGETARIAN PIZZAS** 🌱\n"
+                menu_str += " **VEGETARIAN PIZZAS** \n"
                 menu_str += "═══════════════════════════════════════════════════\n\n"
                 for i, pizza in enumerate(veg_pizzas, 1):
                     menu_str += f"**{i:2d}. {pizza['name']}** - €{pizza['price']:.2f}\n"
@@ -343,7 +343,7 @@ class MenuManager:
             # Vegan Pizzas
             if vegan_pizzas:
                 menu_str += "═══════════════════════════════════════════════════\n"
-                menu_str += "🌿 **VEGAN PIZZAS** 🌿\n"
+                menu_str += " **VEGAN PIZZAS** \n"
                 menu_str += "═══════════════════════════════════════════════════\n\n"
                 for i, pizza in enumerate(vegan_pizzas, 1):
                     menu_str += f"**{i:2d}. {pizza['name']}** - €{pizza['price']:.2f}\n"
@@ -352,7 +352,7 @@ class MenuManager:
             # Non-Veg Pizzas
             if nonveg_pizzas:
                 menu_str += "═══════════════════════════════════════════════════\n"
-                menu_str += "🍖 **NON-VEGETARIAN PIZZAS** 🍖\n"
+                menu_str += " **NON-VEGETARIAN PIZZAS** \n"
                 menu_str += "═══════════════════════════════════════════════════\n\n"
                 for i, pizza in enumerate(nonveg_pizzas, 1):
                     menu_str += f"**{i:2d}. {pizza['name']}** - €{pizza['price']:.2f}\n"
@@ -360,8 +360,8 @@ class MenuManager:
             
             # Extras section
             menu_str += "═══════════════════════════════════════════════════\n"
-            menu_str += "🍞 **EXTRAS & SIDES** 🍞\n"
-            menu_str += "═══════════════════════════════════════════════════\n\n"
+            menu_str += " **EXTRAS & SIDES** \n"
+            menu_str += "══════════════════════════════════════════════════\n\n"
             
             for i, extra in enumerate(self.menu_data['extras'], 1):
                 menu_str += f"**{i:2d}. {extra['name']}** - €{extra['price']:.2f}\n"
@@ -372,7 +372,7 @@ class MenuManager:
         
         # Drinks section (always the same)
         menu_str += "═══════════════════════════════════════════════════\n"
-        menu_str += "🥤 **DRINKS & BEVERAGES** 🥤\n"
+        menu_str += " **DRINKS & BEVERAGES** \n"
         menu_str += "═══════════════════════════════════════════════════\n\n"
         
         # Group drinks
@@ -395,7 +395,7 @@ class MenuManager:
                 menu_str += f"{beer_info}\n"
         
         menu_str += "\n═══════════════════════════════════════════════════\n"
-        menu_str += "💡 **Tip:** Just tell me the name or number of what you'd like!\n"
+        menu_str += " **Tip:** Just tell me the name or number of what you'd like!\n"
         menu_str += "═══════════════════════════════════════════════════"
         
         return menu_str
@@ -418,9 +418,9 @@ class PizzaChatbot:
                 generation_config=self.generation_config,
                 system_instruction=self._get_system_instruction()
             )
-            print("✅ PizzaChatbot initialized with Gemini model successfully")
+            print("PizzaChatbot initialized with Gemini model successfully")
         except Exception as e:
-            print(f"❌ Failed to initialize PizzaChatbot: {e}")
+            print(f"Failed to initialize PizzaChatbot: {e}")
             self.model = None
 
     def _get_system_instruction(self) -> str:
@@ -491,14 +491,14 @@ class PizzaChatbot:
         """Retrieves or creates a session state for a user."""
         if session_id not in self.session_states:
             self.session_states[session_id] = OrderState()
-            print(f"🆕 Created new session state for: {session_id}")
+            print(f"Created new session state for: {session_id}")
         return self.session_states[session_id]
 
     def reset_session(self, session_id: str):
         """Resets the state for a given session."""
         if session_id in self.session_states:
             del self.session_states[session_id]
-            print(f"🔄 Reset session state for: {session_id}")
+            print(f"Reset session state for: {session_id}")
 
     def extract_items_from_message(self, message: str, state: OrderState):
         """Extract pizza, extra, and drink orders from user message."""
@@ -509,7 +509,7 @@ class PizzaChatbot:
             if pizza['name'].lower() in message_lower:
                 if pizza not in state.order_data['pizzas']:
                     state.order_data['pizzas'].append(pizza)
-                    print(f"🍕 Added pizza: {pizza['name']}")
+                    print(f" Added pizza: {pizza['name']}")
 
         # ADD THIS: Extract toppings
         for category in self.menu_manager.menu_data['toppings'].values():
@@ -517,21 +517,21 @@ class PizzaChatbot:
                 if topping['name'].lower() in message_lower:
                     if topping not in state.order_data['toppings']:
                         state.order_data['toppings'].append(topping)
-                        print(f"🧀 Added topping: {topping['name']}")
+                        print(f"Added topping: {topping['name']}")
         
         # Extract extras
         for extra in self.menu_manager.extra_lookup.values():
             if any(word in message_lower for word in extra['name'].lower().split()):
                 if extra not in state.order_data['extras']:
                     state.order_data['extras'].append(extra)
-                    print(f"🍞 Added extra: {extra['name']}")
+                    print(f"Added extra: {extra['name']}")
         
         # Extract drinks
         for drink in self.menu_manager.drink_lookup.values():
             if drink['name'].lower() in message_lower:
                 if drink not in state.order_data['drinks']:
                     state.order_data['drinks'].append(drink)
-                    print(f"🥤 Added drink: {drink['name']}")
+                    print(f"Added drink: {drink['name']}")
 
     def extract_customer_info(self, message: str, state: OrderState):
         """Extract customer information from message."""
@@ -543,7 +543,7 @@ class PizzaChatbot:
             digit_matches = re.findall(r'\d{7,}', message)
             if digit_matches:
                 state.order_data['customer_info']['phone'] = digit_matches[0]
-                print(f"📞 Extracted phone: {digit_matches[0]}")
+                print(f"Extracted phone: {digit_matches[0]}")
             else:
                 # Method 2: Find digits with some separators, then clean
                 phone_match = re.search(r'[\d\s\-\(\)]{7,}', message)
@@ -552,7 +552,7 @@ class PizzaChatbot:
                     phone_clean = re.sub(r'[^\d]', '', phone_match.group())
                     if len(phone_clean) >= 7:
                         state.order_data['customer_info']['phone'] = phone_clean
-                        print(f"📞 Extracted phone (cleaned): {phone_clean}")
+                        print(f"Extracted phone (cleaned): {phone_clean}")
         
         # Look for address (simple heuristic)
         if any(word in message.lower() for word in ['str', 'street', 'straße', 'platz', 'berlin']) and not state.order_data['customer_info']['address']:
@@ -560,7 +560,7 @@ class PizzaChatbot:
             for line in lines:
                 if any(word in line.lower() for word in ['str', 'street', 'straße', 'platz']):
                     state.order_data['customer_info']['address'] = line.strip()
-                    print(f"🏠 Extracted address: {line.strip()}")
+                    print(f"Extracted address: {line.strip()}")
                     break
         
         # Extract name (if starts with "my name is" or similar)
@@ -569,7 +569,7 @@ class PizzaChatbot:
             match = re.search(pattern, message.lower())
             if match and not state.order_data['customer_info']['name']:
                 state.order_data['customer_info']['name'] = match.group(1).title()
-                print(f"👤 Extracted name: {match.group(1).title()}")
+                print(f" Extracted name: {match.group(1).title()}")
                 break
 
     def update_state_from_message(self, message: str, state: OrderState):
@@ -584,11 +584,11 @@ class PizzaChatbot:
             rejection_words = ["no", "wrong", "change", "modify", "cancel"]
             
             if any(word in message_lower for word in confirmation_words):
-                print(f"✅ Order confirmed by user: {message}")
+                print(f"Order confirmed by user: {message}")
                 state.step = "place_order"
                 return  # ADD THIS RETURN - it's already there
             elif any(word in message_lower for word in rejection_words):
-                print(f"❌ Order rejected by user: {message}")
+                print(f"Order rejected by user: {message}")
                 state.handle_order_rejection()
                 return  # ADD THIS RETURN - it's already there
         
@@ -645,10 +645,10 @@ class PizzaChatbot:
             # FIXED: Check if we have both name and phone after extraction
             if (state.order_data['customer_info']['name'] and 
                 state.order_data['customer_info']['phone']):
-                print("\n ✅ Both name and phone collected - moving to show_summary")
+                print("\n Both name and phone collected - moving to show_summary")
                 state.step = "show_summary"
             else:
-                print("\n ❌ Still missing contact info - staying in ask_contact_info")
+                print("\n Still missing contact info - staying in ask_contact_info")
 
 
 
@@ -690,7 +690,7 @@ class PizzaChatbot:
         # Handle special commands
         if "restart" in user_message.lower() or "cancel" in user_message.lower():
             self.reset_session(session_id)
-            return {'content': "🔄 Order cancelled! Let's start fresh. Welcome to PizzaBahn! 🍕 Would you like to order a delicious pizza today?", 'type': 'text'}
+            return {'content': "Order cancelled! Let's start fresh. Welcome to PizzaBahn! Would you like to order a delicious pizza today?", 'type': 'text'}
         
         # Handle menu request properly
         if "menu" in user_message.lower() or "show menu" in user_message.lower():
@@ -707,9 +707,9 @@ class PizzaChatbot:
             return {'content': menu_text, 'type': 'menu'}
         
         # IMPORTANT: Update state BEFORE generating response
-        print(f"🔄 Current step before update: {state.step}")
+        print(f"Current step before update: {state.step}")
         self.update_state_from_message(user_message, state)
-        print(f"🔄 Current step after update: {state.step}")
+        print(f"Current step after update: {state.step}")
         
         # Create context for the model
         context = f"""
@@ -735,7 +735,7 @@ class PizzaChatbot:
             """
         
         try:
-            print(f"🤖 Processing message for session {session_id}, step: {state.step}")
+            print(f"Processing message for session {session_id}, step: {state.step}")
             
             # If we need to show summary, calculate total
             if state.step in ["show_summary", "confirm_order"]:
@@ -764,7 +764,7 @@ class PizzaChatbot:
                 }
                 response_text += f"\n\n```json\n{json.dumps(order_json, indent=2)}\n```"
                 state.step = "end_conversation"
-                print(f"✅ Order completed for session {session_id}")
+                print(f"Order completed for session {session_id}")
             
             # If showing summary, move to confirm_order step
             elif state.step == "show_summary":
@@ -773,7 +773,7 @@ class PizzaChatbot:
             return {'content': response_text, 'type': 'text'}
             
         except Exception as e:
-            print(f"❌ Gemini API Error: {e}")
+            print(f"Gemini API Error: {e}")
             return {'content': "Sorry, I'm having trouble processing your request. Please try again!", 'type': 'text'}
 
 chatbot = PizzaChatbot()
@@ -804,7 +804,7 @@ def chat():
         })
         
     except Exception as e:
-        print(f"❌ Flask route error: {e}")
+        print(f"Flask route error: {e}")
         return jsonify({
             'response': "Sorry, I'm having technical difficulties. Please try again!",
             'type': 'text'
@@ -818,7 +818,7 @@ def get_menu():
             'type': 'menu'
         })
     except Exception as e:
-        print(f"❌ Menu endpoint error: {e}")
+        print(f"Menu endpoint error: {e}")
         return jsonify({'error': 'Failed to retrieve menu data'}), 500
 
 @app.route('/api/reset/<session_id>', methods=['POST'])
@@ -827,9 +827,10 @@ def reset_session_endpoint(session_id):
         chatbot.reset_session(session_id)
         return jsonify({'message': 'Session reset successfully'})
     except Exception as e:
-        print(f"❌ Reset endpoint error: {e}")
+        print(f"Reset endpoint error: {e}")
         return jsonify({'error': 'Failed to reset session'}), 500
 
 if __name__ == '__main__':
-    print("🚀 Starting PizzaBahn server...")
+    print("Starting PizzaBahn server...")
+
     app.run(debug=True, port=5000)
