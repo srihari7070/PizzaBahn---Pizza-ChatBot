@@ -91,15 +91,15 @@ class ChatManager {
         contentDiv.className = 'message-content menu-display';
         
         // Pizzas
-        contentDiv.innerHTML += `<h4>🍕 Pizzas</h4>`;
+        contentDiv.innerHTML += `<h4>Pizzas</h4>`;
         contentDiv.innerHTML += this.createMenuTableFromData(menuData.pizzas, 'pizza');
 
         // Extras
-        contentDiv.innerHTML += `<h4>🍞 Extras</h4>`;
+        contentDiv.innerHTML += `<h4>Extras</h4>`;
         contentDiv.innerHTML += this.createMenuTableFromData(menuData.extras, 'extra');
 
         // Drinks
-        contentDiv.innerHTML += `<h4>🥤 Drinks</h4>`;
+        contentDiv.innerHTML += `<h4> Drinks</h4>`;
         contentDiv.innerHTML += this.createMenuTableFromData(menuData.drinks, 'drink');
 
         menuDisplayDiv.appendChild(contentDiv);
@@ -261,3 +261,4 @@ class ChatManager {
 document.addEventListener('DOMContentLoaded', () => {
     window.chatManager = new ChatManager();
 });
+
